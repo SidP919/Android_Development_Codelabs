@@ -14,5 +14,6 @@ public class SimpleAsyncTask extends AppCompatActivity {
     }
 
     public void startTask(View view) {
+        
     }
 }
