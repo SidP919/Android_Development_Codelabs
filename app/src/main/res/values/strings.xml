@@ -2,4 +2,6 @@
     <string name="app_name">App01</string>
     <string name="helloToast">Hello! Toast.</string>
     <string name="count">COUNT</string>
+    <string name="simpleAsyncTask_initialMessageInTextView">I\'m ready to start work</string>
+    <string name="simpleAsyncTask_Button_start_task">Start Task</string>
 </resources>
