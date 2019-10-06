@@ -25,5 +25,6 @@ public class BooksAsyncTaskLoader extends AppCompatActivity {
     public void searchTheBook(View view) {
         String queryString = mBookInput.getText().toString();
 
+        new FetchBook(mTitleText, mAuthorText).execute(queryString);
     }
 }

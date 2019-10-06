@@ -16,13 +16,11 @@ public class FetchBook extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... strings) {
-        String ans = "";
-        return ans;
+        return NetworkUtils.getBookInfo(strings[0]);
     }
 
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-
     }
 }
