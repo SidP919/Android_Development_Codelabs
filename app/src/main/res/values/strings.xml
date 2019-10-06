@@ -4,4 +4,5 @@
     <string name="count">COUNT</string>
     <string name="simpleAsyncTask_initialMessageInTextView">I\'m ready to start work</string>
     <string name="simpleAsyncTask_Button_start_task">Start Task</string>
+    <string name="SimpleAsyncTask_progressMessage">Napping…</string>
 </resources>
