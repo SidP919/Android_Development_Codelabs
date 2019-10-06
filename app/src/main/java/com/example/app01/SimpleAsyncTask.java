@@ -2,6 +2,7 @@ package com.example.app01;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -39,6 +40,11 @@ public class SimpleAsyncTask extends AppCompatActivity {
          */
     }
 
+    public void searchBook(View view) {
+        Intent in = new Intent(this, BooksAsyncTaskLoader.class);
+        startActivity(in);
+    }
+
     public class MyAsyncTask extends AsyncTask<Void, Void, String> {
 
         private WeakReference<TextView> mTextView;
@@ -67,7 +73,7 @@ public class SimpleAsyncTask extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            return "Awake at last after sleeping for" + s + "milliseconds";
+            return "Awake at last after sleeping for " + s + " milliseconds";
         }
 
         @Override

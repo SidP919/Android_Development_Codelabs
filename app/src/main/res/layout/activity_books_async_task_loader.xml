@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/layoutMargin"
+    tools:context=".BooksAsyncTaskLoader">
+
+    <TextView
+        android:id="@+id/BookAsyncTaskLoader_id_instructionsTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/instructions"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+    <EditText
+        android:id="@+id/BookAsyncTaskLoader_id_editText01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/BookAsyncTaskLoader_id_instructionsTV"
+        android:layout_marginTop="@dimen/viewMarginTop"
+        android:hint="@string/input_hint"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/BookAsyncTaskLoader_id_searchBook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/BookAsyncTaskLoader_id_editText01"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/viewMarginTop"
+        android:onClick="searchTheBook"
+        android:padding="@dimen/viewPadding"
+        android:text="@string/button_text" />
+
+    <TextView
+        android:id="@+id/BookAsyncTaskLoader_id_titleTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/BookAsyncTaskLoader_id_searchBook"
+        android:layout_marginTop="@dimen/viewMarginTop"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
+    <TextView
+        android:id="@+id/BookAsyncTaskLoader_id_authorTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/BookAsyncTaskLoader_id_titleTV"
+        android:layout_marginTop="@dimen/viewMarginTop"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+</RelativeLayout>

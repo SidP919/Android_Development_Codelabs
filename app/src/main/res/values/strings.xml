@@ -1,8 +1,18 @@
 <resources>
     <string name="app_name">App01</string>
+    //Following strings are for MainActivity files
     <string name="helloToast">Hello! Toast.</string>
     <string name="count">COUNT</string>
+
+    //Following strings are for simpleAsyncTask files
     <string name="simpleAsyncTask_initialMessageInTextView">I\'m ready to start work</string>
     <string name="simpleAsyncTask_Button_start_task">Start Task</string>
     <string name="SimpleAsyncTask_progressMessage">Napping…</string>
+    <string name="simpleAsyncTask_button_string_search_books">Search Books</string>
+
+    //Following strings are for BooksAsynTaskLoader files
+    <string name="instructions">Enter a book name to find out who wrote the book. </string>
+    <string name="button_text">Search Books</string>
+    <string name="input_hint">Book Title</string>
+
 </resources>
