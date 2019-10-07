@@ -25,7 +25,7 @@ public class NetworkUtils {
 
     public static String getBookInfo(String queryString) {
 
-        //Following variables for connecting to the internet, reading the incoming data, and
+        //Following variables are for connecting to the internet, reading the incoming data, and
         // holding the response string:-
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
