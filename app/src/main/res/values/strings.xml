@@ -15,5 +15,6 @@
     <string name="button_text">Search Books</string>
     <string name="input_hint">Book Title</string>
     <string name="no_results">No Results Found</string>
+    <string name="BooksAsyncTaskLoader_string_loading"><![CDATA[Loading....]]></string>
 
 </resources>

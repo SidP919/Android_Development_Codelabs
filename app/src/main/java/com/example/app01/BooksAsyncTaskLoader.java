@@ -2,10 +2,13 @@ package com.example.app01;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class BooksAsyncTaskLoader extends AppCompatActivity {
 
@@ -25,6 +28,27 @@ public class BooksAsyncTaskLoader extends AppCompatActivity {
     public void searchTheBook(View view) {
         String queryString = mBookInput.getText().toString();
 
-        new FetchBook(mTitleText, mAuthorText).execute(queryString);
+        //HidetheKeyboard
+        InputMethodManager inputManager = (InputMethodManager)
+                getSystemService(Context.INPUT_METHOD_SERVICE);
+
+        if (inputManager != null) {
+            inputManager.hideSoftInputFromWindow(view.getWindowToken(),
+                    InputMethodManager.HIDE_NOT_ALWAYS);
+        }
+
+        if (queryString.length() == 0) {
+            Toast.makeText(this, "Enter a keyword to search a book.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (NetworkUtils.isNetworkConnected(getApplicationContext())) {
+            new FetchBook(mTitleText, mAuthorText).execute(queryString);
+
+            mTitleText.setText("");
+            mAuthorText.setText(R.string.BooksAsyncTaskLoader_string_loading);
+        } else {
+            Toast.makeText(this, "Please check your network connection", Toast.LENGTH_LONG).show();
+        }
     }
 }

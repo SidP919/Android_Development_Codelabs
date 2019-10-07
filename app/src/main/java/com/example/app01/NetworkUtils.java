@@ -1,5 +1,8 @@
 package com.example.app01;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.util.Log;
 
@@ -112,7 +115,22 @@ public class NetworkUtils {
             }
         }
 
-        Log.d(LOG_TAG, bookJSONString);
+        if (bookJSONString != null) {
+            Log.d(LOG_TAG, bookJSONString);
+        }
         return bookJSONString;
     }
+
+    //For checking whether network connection is available or not:-
+    static boolean isNetworkConnected(Context ctx) {
+        ConnectivityManager cm = (ConnectivityManager) ctx
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo ni = null;
+        if (cm != null) {
+            ni = cm.getActiveNetworkInfo();
+        }
+
+        return ni != null && ni.isConnectedOrConnecting();
+    }
+
 }

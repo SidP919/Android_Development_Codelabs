@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BooksAsyncTaskLoader"></activity>
+        <activity android:name=".UIHelperActivity"></activity>
+        <activity android:name=".BooksAsyncTaskLoader" />
         <activity android:name=".SimpleAsyncTask" />
         <activity android:name=".MainActivity">
             <intent-filter>
