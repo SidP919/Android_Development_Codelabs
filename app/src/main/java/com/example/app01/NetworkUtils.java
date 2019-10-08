@@ -132,5 +132,4 @@ public class NetworkUtils {
 
         return ni != null && ni.isConnectedOrConnecting();
     }
-
 }
