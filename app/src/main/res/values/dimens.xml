@@ -3,4 +3,5 @@
     <dimen name="layoutMargin">16dp</dimen>
     <dimen name="viewMarginTop">24dp</dimen>
     <dimen name="viewPadding">16dp</dimen>
+    <dimen name="viewPaddingLandscape">8dp</dimen>
 </resources>

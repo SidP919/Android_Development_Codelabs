@@ -13,7 +13,7 @@
     //Following strings are for BooksAsynTaskLoader files
     <string name="instructions">Enter a book name to find out who wrote the book. </string>
     <string name="button_text">Search Books</string>
-    <string name="input_hint">Book Title</string>
+    <string name="input_hint">Enter Book Title</string>
     <string name="no_results">No Results Found</string>
     <string name="BooksAsyncTaskLoader_string_loading"><![CDATA[Loading....]]></string>
 
