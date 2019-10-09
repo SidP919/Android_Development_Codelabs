@@ -16,5 +16,24 @@
     <string name="input_hint">Enter Book Title</string>
     <string name="no_results">No Results Found</string>
     <string name="BooksAsyncTaskLoader_string_loading"><![CDATA[Loading....]]></string>
+    <string name="title_activity_navigation_drawer">NavigationDrawerActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_scoreCounter">ScoreCounterApp</string>
+    <string name="menu_asyncTask">AsyncTaskApp</string>
+    <string name="menu_asyncTaskLoader">AsyncTaskLoaderApp</string>
+    <string name="menu_broadcastReciever">BroadcastReciever</string>
+    <string name="menu_notifications">NotificationsApp</string>
+    <string name="menu_alarmManager">TheAlarmManagerApp</string>
+    <string name="menu_jobScheduler">JobSchedulerApp</string>
+    <string name="menu_sharedPreferences">SharedPreferencesApp</string>
+    <string name="menu_AppSettings">AppSettingsApp</string>
+    <string name="menu_RoomLiveDataViewModel">RoomLiveDataViewModelApp</string>
+    <string name="nav_drawer_instructions">Choose the activity from the Navigation drawer on the left</string>
 
 </resources>
