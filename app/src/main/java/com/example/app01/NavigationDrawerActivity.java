@@ -3,6 +3,8 @@ package com.example.app01;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.app01.appFragments.BroadcastRecieverFragment;
+import com.example.app01.appFragments.ScoreCounterFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -19,6 +21,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.Menu;
 
@@ -85,10 +90,10 @@ public class NavigationDrawerActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        Fragment fragment = null;
 
         if (id == R.id.scoreCounterApp) {
-            Intent in = new Intent(this, MainActivity.class);
-            startActivity(in);
+            fragment = new ScoreCounterFragment();
         } else if (id == R.id.asyncTaskApp) {
             Intent in = new Intent(this, SimpleAsyncTask.class);
             startActivity(in);
@@ -97,12 +102,19 @@ public class NavigationDrawerActivity extends AppCompatActivity
             Intent in = new Intent(this, BooksAsyncTaskLoader.class);
             startActivity(in);
 
-//        } else if (id == R.id.broadcastRecieverApp) {
-//
+        } else if (id == R.id.broadcastRecieverApp) {
+            fragment = new BroadcastRecieverFragment();
 //        } else if (id == R.id.notificationsApp) {
 //
 //        } else if (id == R.id.alarmManagerApp) {
 //
+        }
+
+        if(fragment != null){
+            FragmentManager fm = getSupportFragmentManager();
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.id_navigation_drawer_frameLayout, fragment);
+            ft.commit();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
