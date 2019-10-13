@@ -3,8 +3,11 @@ package com.example.app01;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.app01.appFragments.BooksAsyncTaskLoaderFragment;
 import com.example.app01.appFragments.BroadcastRecieverFragment;
+import com.example.app01.appFragments.NotificationsFragment;
 import com.example.app01.appFragments.ScoreCounterFragment;
+import com.example.app01.appFragments.SimpleAsyncTaskFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -30,20 +33,27 @@ import android.view.Menu;
 public class NavigationDrawerActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private static Fragment fragment = null;
+    private FragmentManager fm;
+    private FragmentTransaction ft;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-//        FloatingActionButton fab = findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
+
+        if (fragment == null)
+            fragment = new ScoreCounterFragment();
+
+        if (fragment != null) {
+            fm = getSupportFragmentManager();
+            ft = fm.beginTransaction();
+            ft.replace(R.id.id_navigation_drawer_frameLayout, fragment);
+            ft.commit();
+        }
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -51,6 +61,7 @@ public class NavigationDrawerActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
     }
 
     @Override
@@ -90,29 +101,29 @@ public class NavigationDrawerActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        Fragment fragment = null;
 
         if (id == R.id.scoreCounterApp) {
+            getSupportActionBar().setTitle(ScoreCounterFragment.class.getSimpleName());
             fragment = new ScoreCounterFragment();
         } else if (id == R.id.asyncTaskApp) {
-            Intent in = new Intent(this, SimpleAsyncTask.class);
-            startActivity(in);
-
+            getSupportActionBar().setTitle(SimpleAsyncTaskFragment.class.getSimpleName());
+            fragment = new SimpleAsyncTaskFragment();
         } else if (id == R.id.asyncTaskLoaderApp) {
-            Intent in = new Intent(this, BooksAsyncTaskLoader.class);
-            startActivity(in);
-
+            getSupportActionBar().setTitle(BooksAsyncTaskLoaderFragment.class.getSimpleName());
+            fragment = new BooksAsyncTaskLoaderFragment();
         } else if (id == R.id.broadcastRecieverApp) {
+            getSupportActionBar().setTitle(BroadcastRecieverFragment.class.getSimpleName());
             fragment = new BroadcastRecieverFragment();
-//        } else if (id == R.id.notificationsApp) {
-//
+        } else if (id == R.id.notificationsApp) {
+            getSupportActionBar().setTitle(NotificationsFragment.class.getSimpleName());
+            fragment = new NotificationsFragment();
 //        } else if (id == R.id.alarmManagerApp) {
 //
         }
 
         if(fragment != null){
-            FragmentManager fm = getSupportFragmentManager();
-            FragmentTransaction ft = fm.beginTransaction();
+            fm = getSupportFragmentManager();
+            ft = fm.beginTransaction();
             ft.replace(R.id.id_navigation_drawer_frameLayout, fragment);
             ft.commit();
         }

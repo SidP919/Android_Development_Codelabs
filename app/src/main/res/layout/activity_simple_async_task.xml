@@ -24,14 +24,14 @@
         android:padding="@dimen/viewPadding"
         android:text="@string/simpleAsyncTask_Button_start_task" />
 
-    <Button
-        android:id="@+id/simpleAsyncTask_searchBooks"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/simpleAsyncTask_button"
-        android:layout_marginTop="@dimen/viewMarginTop"
-        android:onClick="searchBook"
-        android:padding="@dimen/viewPadding"
-        android:text="@string/simpleAsyncTask_button_string_search_books" />
+    <!--    <Button-->
+    <!--        android:id="@+id/simpleAsyncTask_searchBooks"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_below="@id/simpleAsyncTask_button"-->
+    <!--        android:layout_marginTop="@dimen/viewMarginTop"-->
+    <!--        android:onClick="searchBook"-->
+    <!--        android:padding="@dimen/viewPadding"-->
+    <!--        android:text="@string/simpleAsyncTask_button_string_search_books" />-->
 
 </RelativeLayout>

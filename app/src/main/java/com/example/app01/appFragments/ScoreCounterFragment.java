@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,10 +16,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class ScoreCounterFragment extends Fragment {
+public class ScoreCounterFragment extends Fragment implements View.OnClickListener {
 
     private TextView showCount;
     private int counter = 0;
+    private Button toastButton;
+    private Button showCountButton;
 
     @Nullable
     @Override
@@ -30,15 +33,26 @@ public class ScoreCounterFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         showCount = view.findViewById(R.id.MainActivity_countTextView);
+
+        toastButton = view.findViewById(R.id.MainActivity_toastButton);
+        toastButton.setOnClickListener(this);
+
+        showCountButton = view.findViewById(R.id.MainActivity_countButton);
+        showCountButton.setOnClickListener(this);
     }
 
-    public void showToast(View view) {
-        Toast toast = Toast.makeText(getContext(), R.string.helloToast, Toast.LENGTH_LONG);
-        toast.show();
-    }
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.MainActivity_countButton:
+                ++counter;
+                showCount.setText(Integer.toString(counter));
+                break;
 
-    public void count(View view) {
-        ++counter;
-        showCount.setText(Integer.toString(counter));
+            case R.id.MainActivity_toastButton:
+                Toast toast = Toast.makeText(getContext(), R.string.helloToast, Toast.LENGTH_LONG);
+                toast.show();
+                break;
+        }
     }
 }

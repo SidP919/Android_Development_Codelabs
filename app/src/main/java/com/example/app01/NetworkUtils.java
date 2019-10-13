@@ -122,7 +122,7 @@ public class NetworkUtils {
     }
 
     //For checking whether network connection is available or not:-
-    static boolean isNetworkConnected(Context ctx) {
+    public static boolean isNetworkConnected(Context ctx) {
         ConnectivityManager cm = (ConnectivityManager) ctx
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo ni = null;
