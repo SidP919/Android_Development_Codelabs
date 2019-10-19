@@ -77,10 +77,11 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
                 sendNotifications();
                 break;
             case R.id.updateNotificationButton:
-
+                //13
+                updateNotification();
                 break;
             case R.id.cancelNotificationButton:
-
+                cancelNotification();
                 break;
         }
     }
@@ -161,6 +162,17 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
     private void sendNotifications() {
         NotificationCompat.Builder notifyBuilder = getNotificationBuilder();
         mNotifyManager.notify(NOTIFICATION_ID, notifyBuilder.build());
+    }
+
+
+    public void updateNotification() {
+
+    }
+
+    //13
+    //cancel the notification
+    public void cancelNotification() {
+        mNotifyManager.cancel(NOTIFICATION_ID);
     }
 
 }
