@@ -184,7 +184,7 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
 
         notifyBuilder.setStyle(new NotificationCompat.BigPictureStyle()
                 .bigPicture(androidImage)
-                .setBigContentTitle("I just got updated :)"));
+                .setBigContentTitle("I just got updated :)")).setContentText("Now press the cancel button.");
 
         mNotifyManager.notify(NOTIFICATION_ID, notifyBuilder.build());
     }
