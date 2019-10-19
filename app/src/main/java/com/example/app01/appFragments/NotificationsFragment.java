@@ -4,6 +4,8 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -22,25 +24,25 @@ import static android.content.Context.NOTIFICATION_SERVICE;
 
 public class NotificationsFragment extends Fragment implements View.OnClickListener {
 
-    //1
+    //01
     private final static String PRIMARY_CHANNEL_ID = "primary_notification_channel";//Every
     // notification channel must be associated with an ID that is unique within your package.
     // You use this channel ID later,
     // to post your notifications.
 
-    //2
+    //02
     private static final int NOTIFICATION_ID = 0;//You need to associate the notification with a
     // notification ID so that your code can update or cancel
     // the notification in the future.
 
     private static final String NOTIFICATION_FRAGMENT_INTENT_ID = "notificationFragmentIntentId";
 
-    //3
+    //03
     private Button notifyMeButton;
     private Button updateButton;
     private Button cancelButton;
 
-    //4
+    //04
     // The Android system uses the NotificationManager class to deliver notifications to the user
     private NotificationManager mNotifyManager;
 
@@ -55,6 +57,7 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        //05
         notifyMeButton = view.findViewById(R.id.notifyMeButton);
         notifyMeButton.setOnClickListener(this);
 
@@ -64,16 +67,20 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
         cancelButton = view.findViewById(R.id.cancelNotificationButton);
         cancelButton.setOnClickListener(this);
 
-        //5
+        //15
+        setNotificationButtonState(true, false, false);
+
+        //06
         // you must call createNotificationChannel(). If you miss this step, your app crashes!
         createNotificationChannel();
     }
 
+    //05
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.notifyMeButton:
-                //7
+                //07
                 sendNotifications();
                 break;
             case R.id.updateNotificationButton:
@@ -81,12 +88,13 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
                 updateNotification();
                 break;
             case R.id.cancelNotificationButton:
+                //14
                 cancelNotification();
                 break;
         }
     }
 
-    //6
+    //06
     //Notification channels are only available in API 26 and higher,
     // add a condition to check for the device's API version.
     public void createNotificationChannel() {
@@ -108,7 +116,7 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
         }
     }
 
-    //9
+    //09
     //Notifications are created using the NotificationCompat.Builder class,
     // which allows you to set the content and behavior of the notification.
     // A notification can contain the following elements:-----
@@ -131,7 +139,7 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
 
         //10 Till above.
 
-        //9
+        //09
         NotificationCompat.Builder notifyBuilder = new NotificationCompat.Builder(getContext(), PRIMARY_CHANNEL_ID)
                 .setContentTitle("There's a new notification for you:--")
                 .setContentText("Now press the update button.")
@@ -154,24 +162,46 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
         // the defaults are set.
         // Setting the priority alone is not enough.
 
-        //9
+        //09
         return notifyBuilder;
     }
 
-    //8
+    //08
     private void sendNotifications() {
+        setNotificationButtonState(false, true, true);//15
         NotificationCompat.Builder notifyBuilder = getNotificationBuilder();
         mNotifyManager.notify(NOTIFICATION_ID, notifyBuilder.build());
     }
 
-
+    //14
     public void updateNotification() {
 
+        setNotificationButtonState(false, false, true);//15
+        Bitmap androidImage = BitmapFactory
+                .decodeResource(getResources(), R.drawable.mascot_1);//converts drawable to bitmap
+
+        NotificationCompat.Builder notifyBuilder = getNotificationBuilder();
+
+        notifyBuilder.setStyle(new NotificationCompat.BigPictureStyle()
+                .bigPicture(androidImage)
+                .setBigContentTitle("I just got updated :)"));
+
+        mNotifyManager.notify(NOTIFICATION_ID, notifyBuilder.build());
+    }
+
+    //15
+    void setNotificationButtonState(Boolean isNotifyEnabled,
+                                    Boolean isUpdateEnabled,
+                                    Boolean isCancelEnabled) {
+        notifyMeButton.setEnabled(isNotifyEnabled);
+        updateButton.setEnabled(isUpdateEnabled);
+        cancelButton.setEnabled(isCancelEnabled);
     }
 
     //13
     //cancel the notification
     public void cancelNotification() {
+        setNotificationButtonState(true, false, false);//15
         mNotifyManager.cancel(NOTIFICATION_ID);
     }
 
