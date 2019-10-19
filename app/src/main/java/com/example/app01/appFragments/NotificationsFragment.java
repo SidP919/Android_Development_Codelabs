@@ -142,6 +142,17 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
         // user taps on it.
         //now go to onCreateMethod of NavigationDrawerActivity to see point //11
 
+        //12
+        notifyBuilder.setPriority(NotificationCompat.PRIORITY_HIGH);//HIGH or MAX priority
+        // notifications are delivered as "heads up" notifications, which drop down on
+        // top of the user's active screen. Use MAX rarely unless you want the user to be irritated.
+
+        //12
+        notifyBuilder.setDefaults(NotificationCompat.DEFAULT_ALL);//The high-priority notification
+        // will not drop down in front of the active screen unless both the priority and
+        // the defaults are set.
+        // Setting the priority alone is not enough.
+
         //9
         return notifyBuilder;
     }
