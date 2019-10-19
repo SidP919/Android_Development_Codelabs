@@ -3,7 +3,10 @@ package com.example.app01.appFragments;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -46,13 +49,19 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
     // The Android system uses the NotificationManager class to deliver notifications to the user
     private NotificationManager mNotifyManager;
 
+    //16
+    private static final String ACTION_UPDATE_NOTIFICATION =
+            "com.example.app01.appFragments.ACTION_UPDATE_NOTIFICATION";
+    private NotificationReceiver mReceiver;//16
 
+    //00
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_notifications, null);
     }
 
+    //00
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -73,6 +82,10 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
         //06
         // you must call createNotificationChannel(). If you miss this step, your app crashes!
         createNotificationChannel();
+
+        //16
+        mReceiver = new NotificationReceiver();
+        getContext().registerReceiver(mReceiver, new IntentFilter(ACTION_UPDATE_NOTIFICATION));//16
     }
 
     //05
@@ -168,12 +181,29 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
 
     //08
     private void sendNotifications() {
+        //17
+        Intent updateIntent = new Intent(ACTION_UPDATE_NOTIFICATION);
+        PendingIntent updatePendingIntent = PendingIntent.getBroadcast
+                (getContext(), NOTIFICATION_ID, updateIntent, PendingIntent.FLAG_ONE_SHOT);// To
+        // make sure that this pending intent is sent and used only once,
+        // set FLAG_ONE_SHOT.//17
+
+        //15
         setNotificationButtonState(false, true, true);//15
-        NotificationCompat.Builder notifyBuilder = getNotificationBuilder();
-        mNotifyManager.notify(NOTIFICATION_ID, notifyBuilder.build());
+
+        //08
+        NotificationCompat.Builder notifyBuilder = getNotificationBuilder();//08
+
+        //17
+        notifyBuilder.addAction(R.drawable.ic_update, "Update Notification",
+                updatePendingIntent);//17
+
+        //08
+        mNotifyManager.notify(NOTIFICATION_ID, notifyBuilder.build());//08
     }
 
     //14
+    //to update the notification
     public void updateNotification() {
 
         setNotificationButtonState(false, false, true);//15
@@ -190,6 +220,7 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
     }
 
     //15
+    //to set the default state of buttons
     void setNotificationButtonState(Boolean isNotifyEnabled,
                                     Boolean isUpdateEnabled,
                                     Boolean isCancelEnabled) {
@@ -205,4 +236,25 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
         mNotifyManager.cancel(NOTIFICATION_ID);
     }
 
+    //16
+    @Override
+    public void onDestroyView() {
+        getContext().unregisterReceiver(mReceiver);
+        super.onDestroyView();
+    }
+
+    //16
+    public class NotificationReceiver extends BroadcastReceiver {//instead of this subclass we can
+        //also use CustomReciever class we created earlier during BroadcastRecieverFragment app.
+
+        public NotificationReceiver() {
+        }
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            // Update the notification
+            updateNotification();
+
+        }
+    }
 }
