@@ -46,13 +46,14 @@ public class NavigationDrawerActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //11
+        //NotificationApp: //11
+        Intent in = getIntent();
+        int intentInt = in.getIntExtra(NOTIFICATION_FRAGMENT_INTENT_ID, 0);
+        if (intentInt == 3) {
+            fragment = new NotificationsFragment();
+        }//11 finished
+
         if (fragment == null) {
-            Intent in = getIntent();
-            int intentInt = in.getIntExtra(NOTIFICATION_FRAGMENT_INTENT_ID, 0);
-            if (intentInt == 3) {
-                fragment = new NotificationsFragment();
-            } else
                 fragment = new ScoreCounterFragment();
         }
 
