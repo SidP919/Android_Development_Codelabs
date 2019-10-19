@@ -37,6 +37,8 @@ public class NavigationDrawerActivity extends AppCompatActivity
     private FragmentManager fm;
     private FragmentTransaction ft;
 
+    private static final String NOTIFICATION_FRAGMENT_INTENT_ID = "notificationFragmentIntentId";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,8 +46,15 @@ public class NavigationDrawerActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        if (fragment == null)
-            fragment = new ScoreCounterFragment();
+        //11
+        if (fragment == null) {
+            Intent in = getIntent();
+            int intentInt = in.getIntExtra(NOTIFICATION_FRAGMENT_INTENT_ID, 0);
+            if (intentInt == 3) {
+                fragment = new NotificationsFragment();
+            } else
+                fragment = new ScoreCounterFragment();
+        }
 
         if (fragment != null) {
             fm = getSupportFragmentManager();
