@@ -3,6 +3,7 @@ package com.example.app01;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.app01.appFragments.AlarmManagerFragment;
 import com.example.app01.appFragments.BooksAsyncTaskLoaderFragment;
 import com.example.app01.appFragments.BroadcastRecieverFragment;
 import com.example.app01.appFragments.NotificationsFragment;
@@ -52,6 +53,9 @@ public class NavigationDrawerActivity extends AppCompatActivity
         if (intentInt == 3) {
             fragment = new NotificationsFragment();
         }//11 finished
+        else if (intentInt == 1) {//AlarmManagerApp: //14
+            fragment = new AlarmManagerFragment();
+        }
 
         if (fragment == null) {
                 fragment = new ScoreCounterFragment();
@@ -125,8 +129,9 @@ public class NavigationDrawerActivity extends AppCompatActivity
         } else if (id == R.id.notificationsApp) {
             getSupportActionBar().setTitle(NotificationsFragment.class.getSimpleName());
             fragment = new NotificationsFragment();
-//        } else if (id == R.id.alarmManagerApp) {
-//
+        } else if (id == R.id.alarmManagerApp) {
+            getSupportActionBar().setTitle(AlarmManagerFragment.class.getSimpleName());
+            fragment = new AlarmManagerFragment();
         }
 
         if(fragment != null){

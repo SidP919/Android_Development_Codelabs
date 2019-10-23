@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.app01.NavigationDrawerActivity;
 import com.example.app01.R;
 
 import java.util.Objects;
@@ -146,14 +147,16 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
 
         //when the user taps the notification,
         // your app sends a content intent that launches the NotificationsFragment
-        Intent notificationIntent = new Intent(getContext(), getActivity().getClass());
+        Intent notificationIntent = new Intent(getContext(), NavigationDrawerActivity.class);
         notificationIntent.putExtra(NOTIFICATION_FRAGMENT_INTENT_ID, 3);
+        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
         //By using a PendingIntent to communicate with another app, you are telling that app to
         // execute some predefined code at some point in the future. It's like the other app can
         // perform an action on behalf of your app.
-        PendingIntent notificationPendingIntent = PendingIntent.getActivity(getContext(),
+        PendingIntent notificationPendingIntent = PendingIntent.getActivity(getActivity(),
                 NOTIFICATION_ID, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
         //10 Till above.
 
