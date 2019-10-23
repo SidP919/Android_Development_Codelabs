@@ -10,6 +10,7 @@ import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.app01.R;
+
+import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -146,7 +149,9 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
         Intent notificationIntent = new Intent(getContext(), getActivity().getClass());
         notificationIntent.putExtra(NOTIFICATION_FRAGMENT_INTENT_ID, 3);
 
-        //By using a PendingIntent to communicate with another app, you are telling that app to execute some predefined code at some point in the future. It's like the other app can perform an action on behalf of your app.
+        //By using a PendingIntent to communicate with another app, you are telling that app to
+        // execute some predefined code at some point in the future. It's like the other app can
+        // perform an action on behalf of your app.
         PendingIntent notificationPendingIntent = PendingIntent.getActivity(getContext(),
                 NOTIFICATION_ID, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
@@ -184,8 +189,8 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
         //17
         Intent updateIntent = new Intent(ACTION_UPDATE_NOTIFICATION);
         PendingIntent updatePendingIntent = PendingIntent.getBroadcast
-                (getContext(), NOTIFICATION_ID, updateIntent, PendingIntent.FLAG_ONE_SHOT);// To
-        // make sure that this pending intent is sent and used only once,
+                (getContext(), NOTIFICATION_ID, updateIntent, PendingIntent.FLAG_ONE_SHOT);//To make
+        // sure that this pending intent is sent and used only once,
         // set FLAG_ONE_SHOT.//17
 
         //15
@@ -214,7 +219,7 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
 
         notifyBuilder.setStyle(new NotificationCompat.BigPictureStyle()
                 .bigPicture(androidImage)
-                .setBigContentTitle("I just got updated :)")).setContentText("Now press the cancel button.");
+                .setBigContentTitle("I just got updated :)")).setContentText("Now press the cancel button to make me disappear.");
 
         mNotifyManager.notify(NOTIFICATION_ID, notifyBuilder.build());
     }
@@ -238,9 +243,12 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
 
     //16
     @Override
-    public void onDestroyView() {
-        getContext().unregisterReceiver(mReceiver);
-        super.onDestroyView();
+    public void onDestroy() {
+        if (mReceiver != null)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                Objects.requireNonNull(getContext()).unregisterReceiver(mReceiver);
+            }
+        super.onDestroy();
     }
 
     //16

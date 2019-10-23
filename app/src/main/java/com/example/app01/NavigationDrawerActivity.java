@@ -57,12 +57,10 @@ public class NavigationDrawerActivity extends AppCompatActivity
                 fragment = new ScoreCounterFragment();
         }
 
-        if (fragment != null) {
-            fm = getSupportFragmentManager();
-            ft = fm.beginTransaction();
-            ft.replace(R.id.id_navigation_drawer_frameLayout, fragment);
-            ft.commit();
-        }
+        fm = getSupportFragmentManager();
+        ft = fm.beginTransaction();
+        ft.replace(R.id.id_navigation_drawer_frameLayout, fragment);
+        ft.commit();
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);

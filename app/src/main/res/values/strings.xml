@@ -36,5 +36,7 @@
     <string name="menu_RoomLiveDataViewModel">RoomLiveDataViewModelApp</string>
     <string name="nav_drawer_instructions">Choose the activity from the Navigation drawer on the left</string>
     <string name="fragment_broadcast_reciever_instructions">Plug in or out the power connection to recieve broadcast or click below button to send a customBroadcast and then recieve it</string>
+    <string name="alarmManagerFragment_string_alarm_off">Alarm Off</string>
+    <string name="alarmManagerFragment_string_alarm_on">Alarm On</string>
 
 </resources>
