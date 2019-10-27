@@ -38,5 +38,12 @@
     <string name="fragment_broadcast_reciever_instructions">Plug in or out the power connection to recieve broadcast or click below button to send a customBroadcast and then recieve it</string>
     <string name="alarmManagerFragment_string_alarm_off">Alarm Off</string>
     <string name="alarmManagerFragment_string_alarm_on">Alarm On</string>
+    <string name="jobSchedulerFragment_string_network_type_required">Network Type Required</string>
+    <string name="jobSchedulerFragment_string_none">None</string>
+    <string name="jobSchedulerFragment_string_any_network">Any Network</string>
+    <string name="jobSchedulerFragment_string_wifi_only">Wifi only</string>
+    <string name="jobSchedulerFragment_string_requires">Requires:</string>
+    <string name="jobSchedulerFragment_string_schedule_jobs">Schedule Jobs</string>
+    <string name="jobSchedulerFragment_string_cancel_jobs">Cancel Jobs</string>
 
 </resources>

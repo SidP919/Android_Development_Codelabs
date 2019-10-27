@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.example.app01.appFragments.AlarmManagerFragment;
 import com.example.app01.appFragments.BooksAsyncTaskLoaderFragment;
 import com.example.app01.appFragments.BroadcastRecieverFragment;
+import com.example.app01.appFragments.JobSchedulerFragment;
 import com.example.app01.appFragments.NotificationsFragment;
 import com.example.app01.appFragments.ScoreCounterFragment;
 import com.example.app01.appFragments.SimpleAsyncTaskFragment;
@@ -54,8 +55,10 @@ public class NavigationDrawerActivity extends AppCompatActivity
             fragment = new NotificationsFragment();
         }//11 finished
         else if (intentInt == 1) {//AlarmManagerApp: //14
-            fragment = new AlarmManagerFragment();
-        }
+            fragment = new AlarmManagerFragment();//AlarmManagerApp: //14 ends.
+        } else if (intentInt == 2) {//JobSchedulerApp: //05
+            fragment = new JobSchedulerFragment();
+        }//JobSchedulerApp: //05 ends go back to JobSchedulerFragment for //06
 
         if (fragment == null) {
                 fragment = new ScoreCounterFragment();
@@ -132,6 +135,9 @@ public class NavigationDrawerActivity extends AppCompatActivity
         } else if (id == R.id.alarmManagerApp) {
             getSupportActionBar().setTitle(AlarmManagerFragment.class.getSimpleName());
             fragment = new AlarmManagerFragment();
+        } else if (id == R.id.jobSchedulerApp) {
+            getSupportActionBar().setTitle(JobSchedulerFragment.class.getSimpleName());
+            fragment = new JobSchedulerFragment();
         }
 
         if(fragment != null){

@@ -24,6 +24,10 @@
             android:enabled="true"
             android:exported="true" />
 
+        <service
+            android:name=".JobSchedulerNotificationService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
         <activity
             android:name=".NavigationDrawerActivity"
             android:label="@string/title_activity_navigation_drawer"
