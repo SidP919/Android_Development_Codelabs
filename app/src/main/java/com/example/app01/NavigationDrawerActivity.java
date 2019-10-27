@@ -9,6 +9,7 @@ import com.example.app01.appFragments.BroadcastRecieverFragment;
 import com.example.app01.appFragments.JobSchedulerFragment;
 import com.example.app01.appFragments.NotificationsFragment;
 import com.example.app01.appFragments.ScoreCounterFragment;
+import com.example.app01.appFragments.SharedPreferencesFragment;
 import com.example.app01.appFragments.SimpleAsyncTaskFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -138,6 +139,10 @@ public class NavigationDrawerActivity extends AppCompatActivity
         } else if (id == R.id.jobSchedulerApp) {
             getSupportActionBar().setTitle(JobSchedulerFragment.class.getSimpleName());
             fragment = new JobSchedulerFragment();
+        } else if (id == R.id.sharedPreferenceApp) {//SharedPreferencesApp: point //02
+            getSupportActionBar().setTitle(SharedPreferencesFragment.class.getSimpleName());
+            fragment = new SharedPreferencesFragment();
+            //SharedPreferencesApp: point //02 ends. go back to SharedPreferencesFragment
         }
 
         if(fragment != null){
