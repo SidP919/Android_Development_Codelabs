@@ -24,6 +24,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    //Following strings are for NavigationDrawer's menu options:
     <string name="menu_scoreCounter">ScoreCounterApp</string>
     <string name="menu_asyncTask">AsyncTaskApp</string>
     <string name="menu_asyncTaskLoader">AsyncTaskLoaderApp</string>
@@ -34,10 +35,15 @@
     <string name="menu_sharedPreferences">SharedPreferencesApp</string>
     <string name="menu_AppSettings">AppSettingsApp</string>
     <string name="menu_RoomLiveDataViewModel">RoomLiveDataViewModelApp</string>
-    <string name="nav_drawer_instructions">Choose the activity from the Navigation drawer on the left</string>
+
+    //Following strings are for BroadcastRecieverApp:
     <string name="fragment_broadcast_reciever_instructions">Plug in or out the power connection to recieve broadcast or click below button to send a customBroadcast and then recieve it</string>
+
+    //Following strings are for AlarmManagerApp:
     <string name="alarmManagerFragment_string_alarm_off">Alarm Off</string>
     <string name="alarmManagerFragment_string_alarm_on">Alarm On</string>
+
+    //Following strings are for JobSchedulerApp:
     <string name="jobSchedulerFragment_string_network_type_required">Network Type Required</string>
     <string name="jobSchedulerFragment_string_none">None</string>
     <string name="jobSchedulerFragment_string_any_network">Any Network</string>
@@ -45,5 +51,28 @@
     <string name="jobSchedulerFragment_string_requires">Requires:</string>
     <string name="jobSchedulerFragment_string_schedule_jobs">Schedule Jobs</string>
     <string name="jobSchedulerFragment_string_cancel_jobs">Cancel Jobs</string>
+
+    //Following strings are for SharedPreferencesApp:
+    <!-- Button label for blue button -->
+    <string name="blue_button">Blue</string>
+
+    <!-- Button label for green button -->
+    <string name="green_button">Green</string>
+
+    <!-- Button label for red button -->
+    <string name="red_button">Red</string>
+
+    <!-- Button label for black button -->
+    <string name="black_button">Black</string>
+
+    <!-- Default string for count TextView -->
+    <string name="default_count">0</string>
+
+    <!-- Button label for Count button -->
+    <string name="count_button">Count</string>
+
+    <!-- Button label for Reset button -->
+    <string name="reset_button">Reset</string>
+
 
 </resources>

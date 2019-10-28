@@ -65,11 +65,15 @@ public class NavigationDrawerActivity extends AppCompatActivity
                 fragment = new ScoreCounterFragment();
         }
 
-        fm = getSupportFragmentManager();
-        ft = fm.beginTransaction();
-        ft.replace(R.id.id_navigation_drawer_frameLayout, fragment);
-        ft.commit();
-
+        //SharedPreferencesFragment: point //09
+        // If turn the screen orientation then the savedInstanceState is not null.
+        // In this condition, do not need to add new fragment again.
+        if (savedInstanceState == null) {//SharedPreferencesFragment: point //09 ends go back.
+            fm = getSupportFragmentManager();
+            ft = fm.beginTransaction();
+            ft.replace(R.id.id_navigation_drawer_frameLayout, fragment);
+            ft.commit();
+        }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -77,7 +81,6 @@ public class NavigationDrawerActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-
     }
 
     @Override
